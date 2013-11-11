@@ -12,58 +12,62 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>comment</key>
+			<string>Cisco keywwords that end blocks of configuration.</string>
 			<key>match</key>
-			<string>^\s*no </string>
+			<string>^(\s)*(exit-address-family)\s</string>
+			<key>name</key>
+			<string>keyword.control.flow.cisco</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Cisco important config bits - special highlight</string>
+			<key>match</key>
+			<string>^(\s)*(exit|end|shutdown)\b</string>
 			<key>name</key>
 			<string>invalid.illegal.cisco</string>
 		</dict>
 		<dict>
+			<key>comment</key>
+			<string>Cisco description/remark statement</string>
 			<key>match</key>
-			<string>access-list</string>
+			<string>^(\s)*(description|remark|version)(.*)</string>
+			<key>name</key>
+			<string>comment.cisco</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Cisco keywwords that begin blocks of configuration.</string>
+			<key>match</key>
+			<string>^(\s)*(interface|line|ip access-list|ipv6 access-list|object-group|class-map|policy-map|route-map|address-family|router)\s</string>
+			<key>name</key>
+			<string>keyword.control.flow.cisco</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Cisco keywwords in comparisons and sequence.</string>
+			<key>match</key>
+			<string>\b(eq|le|ge|seq)\b</string>
+			<key>name</key>
+			<string>keyword.operator.comparison.cisco</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b(access-list)\b</string>
 			<key>name</key>
 			<string>support.function.cisco</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>crypto </string>
+			<string>\b(crypto|any|deny)\b</string>
 			<key>name</key>
 			<string>string.unquoted.cisco</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>any</string>
-			<key>name</key>
-			<string>string.unquoted.cisco</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>deny </string>
-			<key>name</key>
-			<string>support.constant.cisco</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>permit </string>
+			<string>\b(permit)\b</string>
 			<key>name</key>
 			<string>constant.character.escape.cisco</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>object-group</string>
-			<key>name</key>
-			<string>markup.list.cisco</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>object</string>
-			<key>name</key>
-			<string>markup.list.cisco</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>host</string>
-			<key>name</key>
-			<string>markup.list.cisco</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -73,31 +77,43 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>static</string>
+			<string>\b(static|network)\b</string>
 			<key>name</key>
-			<string>constant.numeric.cisco</string>
+			<string>support.constant.cisco</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>tunnel-group</string>
+			<string>^(\s)*(host-info|class)\b</string>
+			<key>name</key>
+			<string>support.constant.cisco</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b(tunnel-group|channel-group|access-group|addrgroup|host|prefix-list|trunk|route-map|filter-list)\b</string>
 			<key>name</key>
 			<string>support.class.cisco</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>crypto</string>
+			<string>^(\s)*(switchport|neighbor|set|match|standby|ip|ipv6|service|mls|spanning-tree|area|logging|snmp-server|ntp)\b</string>
 			<key>name</key>
-			<string>support.class.cisco</string>
+			<string>support.function.cisco</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\d+\.\d+\.\d+\.\d+</string>
+			<string>^(\s)*(no ip|no ipv6|no service|no mls|no logging|snmp)\b</string>
+			<key>name</key>
+			<string>entity.name.function.cisco</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\d+\.\d+\.\d+\.\d+(/\d{0,2})?</string>
 			<key>name</key>
 			<string>constant.numeric.cisco</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>[0-9a-fA-F]{0,4}:([0-9a-fA-F]{0,4}:)+[0-9a-fA-F]{0,4}</string>
+			<string>[0-9a-fA-F]{0,4}:([0-9a-fA-F]{0,4}:)+[0-9a-fA-F]{0,4}(/\d{0,3})?</string>
 			<key>name</key>
 			<string>constant.numeric.cisco</string>
 		</dict>

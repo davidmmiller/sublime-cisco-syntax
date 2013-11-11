@@ -3,59 +3,71 @@
   "fileTypes": ["cfg","txt"],
   "patterns": [
 
-	{ "match": "^\\s*no ",
-	  "name": "invalid.illegal.cisco"
+	{ "match": "^(\\s)*(exit-address-family)\\s",
+	  "name": "keyword.control.flow.cisco",
+	  "comment": "Cisco keywwords that end blocks of configuration."
 	},
 
-	{ "match": "access-list",
+	{ "match": "^(\\s)*(exit|end|shutdown)\\b",
+	  "name": "invalid.illegal.cisco",
+	  "comment": "Cisco important config bits - special highlight"
+	},
+
+	{ "match": "^(\\s)*(description|remark|version)(.*)",
+	  "name": "comment.cisco",
+	  "comment": "Cisco description/remark statement"
+	},
+
+	{ "match": "^(\\s)*(interface|line|ip access-list|ipv6 access-list|object-group|class-map|policy-map|route-map|address-family|router)\\s",
+	  "name": "keyword.control.flow.cisco",
+	  "comment": "Cisco keywwords that begin blocks of configuration."
+	},
+
+	{ "match": "\\b(eq|le|ge|seq)\\b",
+	  "name": "keyword.operator.comparison.cisco",
+	  "comment": "Cisco keywwords in comparisons and sequence."
+	},
+
+	{ "match": "\\b(access-list)\\b",
 	  "name": "support.function.cisco"
 	},
 
-	{ "match": "crypto ",
+	{ "match": "\\b(crypto|any|deny)\\b",
 	  "name": "string.unquoted.cisco"
-	},
-	{ "match": "any",
-	  "name": "string.unquoted.cisco"
-	},
-	{ "match": "deny ",
-	  "name": "support.constant.cisco"
 	},
 
-	{ "match": "permit ",
+	{ "match": "\\b(permit)\\b",
 	  "name": "constant.character.escape.cisco"
-	},
-	{ "match": "object-group",
-	  "name": "markup.list.cisco"
-	},
-	{ "match": "object",
-	  "name": "markup.list.cisco"
-	},
-
-	{ "match": "host",
-	  "name": "markup.list.cisco"
 	},
 
 	{ "match": "!(.*)",
 	  "name": "comment.cisco"
 	},
 
-	{ "match": "static",
-	  "name": "constant.numeric.cisco"
+	{ "match": "\\b(static|network)\\b",
+	  "name": "support.constant.cisco"
 	},
 
-	{ "match": "tunnel-group",
+	{ "match": "^(\\s)*(host-info|class)\\b",
+	  "name": "support.constant.cisco"
+	},
+	{ "match": "\\b(tunnel-group|channel-group|access-group|addrgroup|host|prefix-list|trunk|route-map|filter-list)\\b",
 	  "name": "support.class.cisco"
 	},
 	
-	{ "match": "crypto",
-	  "name": "support.class.cisco"
+	{ "match": "^(\\s)*(switchport|neighbor|set|match|standby|ip|ipv6|service|mls|spanning-tree|area|logging|snmp-server|ntp)\\b",
+	  "name": "support.function.cisco"
 	},
 
-	{ "match": "\\d+\\.\\d+\\.\\d+\\.\\d+",
+	{ "match": "^(\\s)*(no ip|no ipv6|no service|no mls|no logging|snmp)\\b",
+	  "name": "entity.name.function.cisco"
+	},
+
+	{ "match": "\\d+\\.\\d+\\.\\d+\\.\\d+(/\\d{0,2})?",
 	  "name": "constant.numeric.cisco"
 	},
 
-	{ "match": "[0-9a-fA-F]{0,4}:([0-9a-fA-F]{0,4}:)+[0-9a-fA-F]{0,4}",
+	{ "match": "[0-9a-fA-F]{0,4}:([0-9a-fA-F]{0,4}:)+[0-9a-fA-F]{0,4}(/\\d{0,3})?",
 	  "name": "constant.numeric.cisco"
 	}
 
